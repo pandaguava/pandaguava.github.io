@@ -1,0 +1,93 @@
+/* 數位辦公室(內網版) 文件樣式 */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+html { scroll-behavior: smooth; }
+body { display: flex; height: 100vh; overflow: hidden; background-color: #f8f9fa; }
+.sidebar { width: 280px; background: #fff; border-right: 1px solid #e0e0e0; display: flex; flex-direction: column; transition: width 0.3s; position: relative; flex-shrink: 0; }
+.sidebar.collapsed { width: 0; overflow: hidden; border-right: none; }
+.sidebar-header { padding: 20px; padding-right: 70px; font-size: 1.2rem; font-weight: bold; border-bottom: 1px solid #f0f0f0; }
+.sidebar-menu { list-style: none; overflow-y: auto; flex-grow: 1; padding: 10px 0; }
+.chapter-container { border-bottom: 1px solid #f1f3f5; }
+.chapter-title { width: 100%; display: flex; justify-content: space-between; padding: 12px 20px; background: none; border: none; font-size: 1rem; font-weight: bold; cursor: pointer; text-align: left; }
+.arrow-icon { display: inline-block; transition: transform 0.2s; color: #6c757d; }
+.chapter-container.active .arrow-icon { transform: rotate(90deg); }
+.section-menu { list-style: none; padding-left: 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s; background: #fafafa; }
+.chapter-container.active .section-menu { max-height: 328px; }
+.section-menu li a { display: block; padding: 10px 20px; color: #495057; text-decoration: none; font-size: 0.9rem; }
+.section-menu li a:hover { color: #007bff; }
+.toggle-btn { position: absolute; top: 14px; left: 224px; z-index: 100; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #007bff; color: white; border: none; border-radius: 6px; font-size: 1.1rem; line-height: 1; cursor: pointer; transition: left 0.3s; }
+.sidebar.collapsed + .toggle-btn { left: 15px; }
+.main-content { flex-grow: 1; padding: 40px; overflow-y: auto; background: #fff; }
+.content-chapter { margin-bottom: 60px; }
+.content-chapter h1 { color: #212529; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 25px; }
+.content-section { margin-bottom: 35px; padding-left: 15px; border-left: 3px solid #e9ecef; }
+.content-section h2 { color: #495057; margin-bottom: 12px; scroll-margin-top: 80px; }
+.content-section p { color: #495057; line-height: 1.8; }
+
+/* ── 表格樣式 ───────────────────────────────── */
+.table-wrap { overflow-x: auto; margin: 14px 0 6px; }
+.main-content table { width: 100%; border-collapse: collapse; font-size: 0.95rem; line-height: 1.7; background: #fff; }
+.main-content caption { caption-side: top; text-align: left; font-size: 0.88rem; color: #6c757d; padding-bottom: 8px; }
+.main-content th,
+.main-content td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid #e9ecef; }
+.main-content thead th { background: #f1f3f5; color: #212529; font-weight: 700; white-space: nowrap; border-bottom: 2px solid #007bff; }
+.main-content tbody td { color: #495057; }
+.main-content tbody td:first-child { color: #212529; font-weight: 600; white-space: nowrap; }
+.main-content tbody tr:nth-child(even) { background: #fbfcfd; }
+.main-content tbody tr.row-even { background: #fbfcfd; }
+.main-content tbody tr.row-odd { background: #fff; }
+.main-content tbody tr:hover { background: #eaf4ff; }
+.main-content tbody tr:last-child td { border-bottom: 2px solid #dee2e6; }
+.main-content table code { background: #f1f3f5; border-radius: 3px; padding: 1px 5px; font-family: Consolas, Monaco, monospace; font-size: 0.9em; }
+.main-content td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.main-content td.wrap,
+.main-content tbody td.wrap:first-child { white-space: normal; }
+
+.fw-host { font-size: 1.05rem; color: #212529; margin: 22px 0 4px; }
+/* ── 2-3 防火牆表 ── */
+.fw-wrap { margin: 0 0 28px; }
+.main-content table.fw-table { table-layout: fixed; }
+.fw-table th:nth-child(1) { width: 16%; }
+.fw-table th:nth-child(2) { width: 20%; }
+.fw-table th:nth-child(3) { width: 40%; }
+.main-content .fw-table td.fw-host { vertical-align: middle; text-align: center; white-space: normal; background: #fff; border-right: 1px solid #e9ecef; }
+.fw-host b { display: block; color: #212529; font-size: 1rem; }
+.fw-host small { display: block; color: #6c757d; font-weight: 400; margin-top: 2px; }
+.main-content .fw-table td.fw-to { font-weight: 600; color: #212529; white-space: nowrap; }
+
+/* ── 3 章技術說明 ── */
+.doc-h3 { font-size: 1.05rem; color: #212529; margin: 26px 0 8px; padding-left: 8px; border-left: 3px solid #007bff; }
+.doc-list { margin: 6px 0 12px 1.6em; color: #495057; line-height: 1.8; }
+.doc-list li { margin: 3px 0; }
+.doc-cmd { background: #1f2933; color: #e6edf3; border-radius: 6px; padding: 12px 14px; margin: 8px 0 14px; overflow-x: auto; font-family: Consolas, Monaco, monospace; font-size: 0.86rem; line-height: 1.6; white-space: pre; }
+.doc-warn { background: #fff4e5; border-left: 4px solid #f0a020; padding: 8px 12px !important; margin: 4px 0 12px; color: #7a4a00 !important; }
+.content-section > p code { background: #f1f3f5; border-radius: 3px; padding: 1px 5px; font-family: Consolas, Monaco, monospace; font-size: 0.9em; }
+.doc-list code { background: #f1f3f5; border-radius: 3px; padding: 1px 5px; font-family: Consolas, Monaco, monospace; font-size: 0.9em; }
+.main-content table.doc-table td code.secret { word-break: break-all; }
+.main-content table.doc-table td code { overflow-wrap: break-word; }
+.main-content table.doc-table td:first-child { width: 1%; }
+
+/* ── 表格工具列（查詢） ─────────────────────── */
+.table-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 14px 0 8px; }
+.table-search-box { position: relative; display: inline-flex; align-items: center; }
+.table-search { width: 240px; max-width: 100%; padding: 7px 30px 7px 12px; border: 1px solid #ced4da; border-radius: 6px; font-size: 0.9rem; color: #212529; background: #fff; outline: none; transition: border-color 0.15s, box-shadow 0.15s; }
+.table-search:focus { border-color: #007bff; box-shadow: 0 0 0 3px rgba(0,123,255,0.15); }
+.table-search-clear { position: absolute; right: 6px; width: 20px; height: 20px; display: none; align-items: center; justify-content: center; border: none; border-radius: 50%; background: #e9ecef; color: #495057; font-size: 0.8rem; line-height: 1; cursor: pointer; }
+.table-search-clear:hover { background: #dee2e6; }
+.table-search-box.has-value .table-search-clear { display: flex; }
+.table-count { font-size: 0.85rem; color: #6c757d; }
+.table-count.filtered { color: #007bff; }
+.main-content tr.table-empty td { text-align: center; color: #868e96; padding: 18px 14px; background: #fff; }
+
+/* ── 表頭排序 ───────────────────────────────── */
+.main-content thead th.sortable { position: relative; padding-right: 30px; cursor: pointer; user-select: none; }
+.main-content thead th.sortable:hover { background: #e9ecef; }
+.main-content thead th.sortable:focus-visible { outline: 2px solid #007bff; outline-offset: -2px; }
+.sort-ind { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; line-height: 1; font-size: 0.5rem; color: #adb5bd; }
+.main-content thead th.sort-asc .sort-ind .sort-up,
+.main-content thead th.sort-desc .sort-ind .sort-down { color: #007bff; }
+@media print { .table-toolbar { display: none; } .main-content thead th.sortable { padding-right: 14px; } .sort-ind { display: none; } }
+@media (max-width: 768px) {
+    .main-content { padding: 20px; }
+    .main-content table { font-size: 0.88rem; }
+    .main-content th, .main-content td { padding: 8px 10px; }
+}
